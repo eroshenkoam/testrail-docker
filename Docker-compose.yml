@@ -1,0 +1,27 @@
+version: '2'
+
+networks:
+  testrail:
+    driver: bridge
+
+services:
+  srv:
+    image: 'testrail'
+    ports:
+      - 80:80
+    volumes:
+      - '/tmp/testrail/attachments:/opt/testrail/attachments'
+      - '/tmp/testrail/reports:/opt/testrail/reports'
+    depends_on:
+      - db
+    networks:
+      - testrail
+  db:
+    image: 'mysql'
+    networks:
+      - testrail
+    environment:
+      MYSQL_USER: 'testrail'
+      MYSQL_PASSWORD: 'testrail'
+      MYSQL_DATABASE: 'testrail'
+      MYSQL_ROOT_PASSWORD: 'really-secret'
