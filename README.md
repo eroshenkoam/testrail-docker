@@ -1,12 +1,6 @@
-## TestRail Docker Image
+## TestRail in docker
 
-Image for a testrail service
-
-### Build the image
+### Start container's
 
 * `cd testrail-docker`
-* `docker build -t 'testrail' .`
- 
-### Start testrail container
- 
 * `docker-compose up`
